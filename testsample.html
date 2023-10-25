@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test Sample</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<style type="text/css">
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+body {
+    padding: 0;
+    margin: 0;
+}
+#content {
+    min-height: 3690px;
+    background-image: url(dskt_bckg.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+footer img {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+footer.dktp {
+    display:block;
+}
+footer.tblt, footer.mbl {
+    display:none;
+}
+/* MENU */
+.hamburger {
+    position:fixed;
+    background-color:transparent;
+    right:40px;
+    top:20px;
+    height:30px;
+    width:30px;
+    padding:20px 20px;
+    -webkit-transform:translate3d(0, 0, 0);
+    transform:translate3d(0, 0, 0);
+    -webkit-transition:-webkit-transform 0.25s cubic-bezier(0.05, 1.04, 0.72, 0.98);
+    transition:transform 0.25s cubic-bezier(0.05, 1.04, 0.72, 0.98);
+    z-index:1002;
+    cursor:pointer;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
+}
+.hamburger.is-active {
+    background-color:none;
+}
+._layer {
+    background:#DD71C6;
+    margin-bottom:4px;
+    border-radius:2px;
+    width:28px;
+    height:4px;
+    opacity:1;
+    -webkit-transform:translate3d(0, 0, 0);
+    transform:translate3d(0, 0, 0);
+    -webkit-transition:all 0.25s cubic-bezier(0.05, 1.04, 0.72, 0.98);
+    transition:all 0.25s cubic-bezier(0.05, 1.04, 0.72, 0.98);
+}
+
+.hamburger:hover .-top{
+    -webkit-transform:translateY(-40%);
+    -ms-transform:translateY(-40%);
+    transform:translateY(-40%);
+}
+.hamburger:hover .-bottom{
+    -webkit-transform:translateY(40%);
+    -ms-transform:translateY(40%);
+    transform:translateY(40%);
+}
+.hamburger.is-active .-top{
+    -webkit-transform:translateY(200%) rotate(45deg) !important;
+    -ms-transform:translateY(200%) rotate(45deg) !important;
+    transform:translateY(200%) rotate(45deg) !important;
+}
+.hamburger.is-active .-mid{
+    opacity:0;
+}
+.hamburger.is-active .-bottom{
+    -webkit-transform:translateY(-200%) rotate(135deg) !important;
+    -ms-transform:translateY(-200%) rotate(135deg) !important;
+    transform:translateY(-200%) rotate(135deg) !important;
+}
+.menuppal{
+    background-color: rgba(255, 255, 255, 0.95);
+    bottom: 0;
+    height: 100%;
+    right: 0;
+    overflow-y: hidden;
+    position: fixed;
+    top: 100px;
+    transform: translateX(1000px);
+    transition: transform 0.35s;
+    width: 30%;
+    z-index: 1001;
+}
+.menuppal.is_active{
+    transform: translate3d(0px, 100px, 0px);
+    transform: translateX(100px);
+    border-radius: 60px 0;
+    top:100px;
+}
+.menuppal ul{
+    margin:0;
+    padding:70px 80px;
+}
+.menuppal ul li { 
+    text-align:left;
+    font-family: 'Libre Baskerville', serif;
+    font-size:1.2rem;
+    line-height:3em;
+    height:3em;
+    border-bottom: solid 1px #DD71C655;
+    margin-right: 100px;
+}
+.menuppal ul li a{
+    color:#444;
+}
+.menuppal ul li a:hover{
+    color:#DD71C6;
+}
+/* COUNTER */
+div#counter {
+    display: inline-flex;
+    width:530px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    padding-left:10px;
+    margin-top: 370px;
+    margin-left: 0;
+    justify-content: center;
+}
+div#counter div {
+    width: 140px;
+    font-family: 'Montserrat';
+    font-size: 2.5rem;
+}
+/* FAQ */
+#faq-block {
+    background-image: url(dskt_faq.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; 
+    padding: 200px 0;   
+}
+.acordeon {
+    position: relative;
+    width: 1125px;
+    margin: 0 auto;
+}
+.acordeon-body {
+}
+.acordeon .label {
+    position: relative;
+    margin: 10px 0;
+    padding: 20px 40px 20px 20px;
+    background: #F9F9F9;
+    border-radius: 20px;
+    font-family: 'Montserrat';
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.acordeon .label::before {
+    content: '\2304';
+    color: black;
+    position: absolute;
+    top: 40%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 2rem;
+}
+
+.acordeon .content {
+    position: relative;
+    padding: 0 20px;
+    background: white;
+    height: 0;
+    font-size: 1rem;
+    text-align: justify;
+    overflow: hidden;
+    transition: 0.5s;
+    font-family: 'Montserrat';
+    line-height: 1.5rem;
+}
+.acordeon .container.active .content { 
+    height: fit-content;    
+    padding: 10px 20px;
+    font-family: 'Montserrat';
+    line-height: 1.5rem;
+}
+.acordeon .container.active .label::before {
+    content: '\2303';
+    font-size: 2rem;
+    position: absolute;
+    bottom: 40%;
+}
+
+/********************* Cellphones *********************/
+@media (min-width: 768px) and (max-width: 1024px) {
+#content {
+    min-height: 12599px;
+    background-image: url(mbl_bckg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+footer img {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+footer.mbl {
+    display:block;
+}
+footer.dktp, footer.tblt {
+    display:none;
+}
+.menuppal {
+    width: 80% !important;
+    height: 60%;
+}
+.menuppal.is_active {
+    border-radius: 80px 0 0 80px;
+    top: 150px;
+    background: #DD71C6;
+}
+._layer {    
+    border-radius:2px;
+    margin-bottom:10px !important;
+    width:80px !important;
+    height:10px;
+}
+.hamburger {
+    right: 100px !important;
+    top:40px;
+    height:80px;
+    width:80px;
+    padding:20px 20px;
+}
+.menuppal ul li {     
+    font-size:2.5rem;
+    border-bottom: solid 1px #ffffff88;
+}
+.menuppal ul li:first-of-type {  
+    border-top: solid 1px #ffffff88;
+}
+.menuppal ul li a{
+    color:#fff;
+}
+.menuppal ul li a:hover{
+    color:#ffd900;
+}
+div#counter {
+    width: 66vw;
+    margin-left: -34vw;
+    margin-top: 1200px;
+    text-align: center;
+    padding: 0 !important;
+    justify-content: center;
+}
+div#counter div {
+    font-size: 5vw;
+    margin: 0 auto;
+}
+#faq-block {
+    background-image: url(mbl_faq.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 450px 0 200px 0  
+}
+.acordeon {
+    position: relative;
+    width: auto;
+    margin: 0 auto;
+}
+.acordeon-body {
+    width:80%;
+    margin: 0 auto;
+}
+.acordeon .label {
+    font-size: 2.5rem;
+    font-family: 'Montserrat';
+}
+.acordeon .content {
+    font-size: 2.5rem;
+    line-height: 3rem;    
+    font-family: 'Montserrat';
+}
+.acordeon .container.active .content { 
+    line-height: 3rem;
+}
+}
+
+/********************* Tablets *********************/
+@media (min-width: 1024px) and (max-width: 1280px) {
+#content {
+    min-height: 1050vh;
+    background-image: url(tblt_bckg.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+footer img {    
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+footer.tblt {
+    display:block;
+}
+footer.dktp, footer.mbl {
+    display:none;
+}
+.menuppal {
+    width: 55% !important;
+    height: 100%;
+}
+.menuppal.is_active{
+    transform: translate3d(0px, 100px, 0px);
+    transform: translateX(100px);
+    border-radius: 60px 0;
+    top:100px;
+    border-radius: 80px 0;
+    top: 100px;
+    background: #fff;
+}
+.menuppal ul li {     
+    font-size:1rem !important;
+    border-bottom: solid 1px #DD71C655;
+    margin-right: 100px;
+}
+.menuppal ul li:first-of-type {  
+    border-top: solid 1px #DD71C655;
+}
+.menuppal ul li a{
+    color:#444;
+}
+.menuppal ul li a:hover{
+    color:#DD71C6;
+}
+._layer {    
+    border-radius:2px;
+    margin-bottom:5px !important;
+    width:50px !important;
+    height:4px;
+    opacity:1;
+    -webkit-transform:translate3d(0, 0, 0);
+    transform:translate3d(0, 0, 0);
+    -webkit-transition:all 0.25s cubic-bezier(0.05, 1.04, 0.72, 0.98);
+    transition:all 0.25s cubic-bezier(0.05, 1.04, 0.72, 0.98);
+}
+.hamburger {
+    right: 70px !important;    
+    top:20px;
+    height:30px;
+    width:30px;
+    padding:20px 20px;
+}
+div#counter {
+    width: 40vw;
+    margin-left: -20vw;
+    margin-top: 65%;
+    text-align: center;
+    padding: 0 !important;
+    justify-content: center;
+}
+div#counter div {
+    font-size: 2.5vw;
+    margin: 0 auto;
+}
+#faq-block {
+    background-image: url(tblt_faq.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 300px 0 200px 0  
+}
+.acordeon-body {
+    width:55%;
+    margin: 0 auto;
+}
+.acordeon {
+    position: relative;
+    width: auto;
+    margin: 0 auto;
+}
+.acordeon .label::before {
+    right: 10px;
+}
+}
+</style>
+  </head>
+  <body>
+    <header>       
+    </header>
+    <section id="content">       
+        <div class="hamburger">
+	    <div class="_layer -top"></div>
+	    <div class="_layer -mid"></div>
+	    <div class="_layer -bottom"></div>
+        </div>
+        <nav class="menuppal">
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Book Online</a></li>
+                <li><a href="#">Weigh Loss Programs</a></li>
+                <li><a href="#">Real Patient Stories</a></li>
+                <li><a href="#">Locations</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Subscription</a></li>
+            </ul>
+        </nav>
+        <div id="counter">
+	    <div id="days"></div>
+	    <div id="hours"></div>
+	    <div id="minutes"></div>
+	    <div id="seconds"></div>
+        </div>
+    </section>
+    <section id="faq-block">
+	<div class="acordeon-body">
+	    <div class="acordeon">
+	        <div class="container">
+		    <div class="label">Why is it free?</div>
+		    <div class="content">Lorem ipsum dolor sit amet consectetur adipiscing elit pretium proin lacinia, nam eu nascetur facilisis id tellus feugiat mi iaculis, magnis hac rhoncus augue in consequat bibendum nunc auctor. Sem porta eros massa fermentum taciti a, penatibus pellentesque lectus condimentum dui dis, parturient non aliquet in auctor. Tempus quis urna dui fames nullam lobortis curae sociis, mauris orci facilisis ligula tincidunt nunc penatibus.</div>
+		</div>
+		<div class="container">
+		    <div class="label">Do I need this if I've had my yearly medical check? What is the difference?</div>
+		    <div class="content">Lorem ipsum dolor sit amet consectetur adipiscing elit pretium proin lacinia, nam eu nascetur facilisis id tellus feugiat mi iaculis, magnis hac rhoncus augue in consequat bibendum nunc auctor. Sem porta eros massa fermentum taciti a, penatibus pellentesque lectus condimentum dui dis, parturient non aliquet in auctor. Tempus quis urna dui fames nullam lobortis curae sociis, mauris orci facilisis ligula tincidunt nunc penatibus.</div>
+		</div>
+		<div class="container">
+		    <div class="label">Can I bring another person to the appointment?</div>
+		    <div class="content">Lorem ipsum dolor sit amet consectetur adipiscing elit pretium proin lacinia, nam eu nascetur facilisis id tellus feugiat mi iaculis, magnis hac rhoncus augue in consequat bibendum nunc auctor. Sem porta eros massa fermentum taciti a, penatibus pellentesque lectus condimentum dui dis, parturient non aliquet in auctor. Tempus quis urna dui fames nullam lobortis curae sociis, mauris orci facilisis ligula tincidunt nunc penatibus.</div>
+		</div>
+		<div class="container">
+		    <div class="label">How long does it take?</div>
+		    <div class="content">Lorem ipsum dolor sit amet consectetur adipiscing elit pretium proin lacinia, nam eu nascetur facilisis id tellus feugiat mi iaculis, magnis hac rhoncus augue in consequat bibendum nunc auctor. Sem porta eros massa fermentum taciti a, penatibus pellentesque lectus condimentum dui dis, parturient non aliquet in auctor. Tempus quis urna dui fames nullam lobortis curae sociis, mauris orci facilisis ligula tincidunt nunc penatibus.</div>
+		</div>
+		<div class="container">
+		    <div class="label">What if I have to cancel or if I'm not sure I'll be able to make it?</div>
+		    <div class="content">Lorem ipsum dolor sit amet consectetur adipiscing elit pretium proin lacinia, nam eu nascetur facilisis id tellus feugiat mi iaculis, magnis hac rhoncus augue in consequat bibendum nunc auctor. Sem porta eros massa fermentum taciti a, penatibus pellentesque lectus condimentum dui dis, parturient non aliquet in auctor. Tempus quis urna dui fames nullam lobortis curae sociis, mauris orci facilisis ligula tincidunt nunc penatibus.</div>
+		</div>
+		<div class="container">
+		    <div class="label">Do I need to bring anything with me?</div>
+		    <div class="content">Lorem ipsum dolor sit amet consectetur adipiscing elit pretium proin lacinia, nam eu nascetur facilisis id tellus feugiat mi iaculis, magnis hac rhoncus augue in consequat bibendum nunc auctor. Sem porta eros massa fermentum taciti a, penatibus pellentesque lectus condimentum dui dis, parturient non aliquet in auctor. Tempus quis urna dui fames nullam lobortis curae sociis, mauris orci facilisis ligula tincidunt nunc penatibus.</div>
+		</div>
+                <div class="container">
+		    <div class="label">What if I don't have insurance?</div>
+		    <div class="content">Lorem ipsum dolor sit amet consectetur adipiscing elit pretium proin lacinia, nam eu nascetur facilisis id tellus feugiat mi iaculis, magnis hac rhoncus augue in consequat bibendum nunc auctor. Sem porta eros massa fermentum taciti a, penatibus pellentesque lectus condimentum dui dis, parturient non aliquet in auctor. Tempus quis urna dui fames nullam lobortis curae sociis, mauris orci facilisis ligula tincidunt nunc penatibus.</div>
+		</div>
+                <div class="container">
+		    <div class="label">Do the weigh loss programs you offer work?</div>
+		    <div class="content">Lorem ipsum dolor sit amet consectetur adipiscing elit pretium proin lacinia, nam eu nascetur facilisis id tellus feugiat mi iaculis, magnis hac rhoncus augue in consequat bibendum nunc auctor. Sem porta eros massa fermentum taciti a, penatibus pellentesque lectus condimentum dui dis, parturient non aliquet in auctor. Tempus quis urna dui fames nullam lobortis curae sociis, mauris orci facilisis ligula tincidunt nunc penatibus.</div>
+		</div>
+                <div class="container">
+		    <div class="label">What's the catch?</div>
+		    <div class="content">Lorem ipsum dolor sit amet consectetur adipiscing elit pretium proin lacinia, nam eu nascetur facilisis id tellus feugiat mi iaculis, magnis hac rhoncus augue in consequat bibendum nunc auctor. Sem porta eros massa fermentum taciti a, penatibus pellentesque lectus condimentum dui dis, parturient non aliquet in auctor. Tempus quis urna dui fames nullam lobortis curae sociis, mauris orci facilisis ligula tincidunt nunc penatibus.</div>
+		</div>
+                <div class="container">
+		    <div class="label">Will I have to exhaust myself in the gym to make it work?</div>
+		    <div class="content">Lorem ipsum dolor sit amet consectetur adipiscing elit pretium proin lacinia, nam eu nascetur facilisis id tellus feugiat mi iaculis, magnis hac rhoncus augue in consequat bibendum nunc auctor. Sem porta eros massa fermentum taciti a, penatibus pellentesque lectus condimentum dui dis, parturient non aliquet in auctor. Tempus quis urna dui fames nullam lobortis curae sociis, mauris orci facilisis ligula tincidunt nunc penatibus.</div>
+		</div>
+                <div class="container">
+		    <div class="label">Where are you located?</div>
+		    <div class="content">Lorem ipsum dolor sit amet consectetur adipiscing elit pretium proin lacinia, nam eu nascetur facilisis id tellus feugiat mi iaculis, magnis hac rhoncus augue in consequat bibendum nunc auctor. Sem porta eros massa fermentum taciti a, penatibus pellentesque lectus condimentum dui dis, parturient non aliquet in auctor. Tempus quis urna dui fames nullam lobortis curae sociis, mauris orci facilisis ligula tincidunt nunc penatibus.</div>
+		</div>
+            </div>
+	 </div>
+    </section>
+    <footer class="dktp"><img src="dskt_footer.jpg" /></footer>
+    <footer class="mbl"><img src="mbl_footer.jpg" /></footer>
+    <footer class="tblt"><img src="tblt_footer.jpg" /></footer>
+
+<!-- MENU -->
+<script>
+// selector
+var menu = document.querySelector('.hamburger');
+// method
+function toggleMenu (event) {
+  this.classList.toggle('is-active');
+  document.querySelector( ".menuppal" ).classList.toggle("is_active");
+  event.preventDefault();
+}
+// event
+menu.addEventListener('click', toggleMenu, false);
+</script>
+
+<!-- COUNTER -->
+<script>
+var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
+var x = setInterval(function() {
+var now = new Date().getTime();
+var distance = countDownDate - now;
+
+var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+document.getElementById("days").innerHTML = days;
+document.getElementById("hours").innerHTML = hours;
+document.getElementById("minutes").innerHTML = minutes;
+document.getElementById("seconds").innerHTML = seconds;
+
+if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+
+<!-- FAQ -->
+<script>
+const acordeon = document.getElementsByClassName('container');
+
+for (i=0; i<acordeon.length; i++) {
+  acordeon[i].addEventListener('click', function () {
+    this.classList.toggle('active')
+  })
+}
+</script>
+</body>
+</html>
